@@ -79,8 +79,6 @@ join pizza_sales.pizza_type pt on p.pizza_type_id = pt.pizza_type_id
 group by pt.category
 order by total_percentage desc;
 
--- cumulative revenue generated over time.
-
 -- Determine the top 3 most ordered pizza types based on revenue for each pizza category.
 with cte as(
 select pt.name,pt.category,
@@ -94,5 +92,4 @@ p.pizza_id = od.pizza_id
 group by pt.category,pt.name
 order by Revenue desc
 )
-
 select * from cte where rnk<=3 order by rnk asc;
